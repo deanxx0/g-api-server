@@ -33,9 +33,9 @@ export class SensorController {
   @Put()
   async updateById(
     @Query('id') id: string,
-    @Body() sensorDto: SensorDto,
+    @Body() inputDoc: object,
   ): Promise<SensorDocument> {
-    return this.sensorService.updateById(id, sensorDto);
+    return this.sensorService.updateById(id, inputDoc);
   }
 
   @Delete()
