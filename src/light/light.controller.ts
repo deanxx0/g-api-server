@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { LightDto } from './light.dto';
 import { LightDocument } from './light.schema';
 import { LightService } from './light.service';
@@ -23,7 +31,10 @@ export class LightController {
   }
 
   @Put()
-  async updateById(@Query('id') id: string, @Body() inputDoc: object): Promise<LightDocument> {
+  async updateById(
+    @Query('id') id: string,
+    @Body() inputDoc: object,
+  ): Promise<LightDocument> {
     return this.lightService.updateById(id, inputDoc);
   }
 

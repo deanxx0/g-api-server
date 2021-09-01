@@ -24,7 +24,9 @@ export class LightService {
   }
 
   async updateById(id: string, inputDoc: object): Promise<LightDocument> {
-    return this.lightModel.findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true }).exec();
+    return this.lightModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
   }
 
   async deleteById(id: string): Promise<LightDocument> {
