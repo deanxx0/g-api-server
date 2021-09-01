@@ -10,12 +10,26 @@ export class SensorService {
     @InjectModel(Sensor.name) private sensorModel: Model<SensorDocument>,
   ) {}
 
-  async post(sensorDto: SensorDto): Promise<SensorDocument> {
-    const postDoc = new this.sensorModel(sensorDto);
-    return postDoc.save();
+  async create(sensorDto: SensorDto): Promise<SensorDocument> {
+    const createDoc = new this.sensorModel(sensorDto);
+    return createDoc.save();
   }
 
-  async getAll(): Promise<SensorDocument[]> {
+  async findAll(): Promise<SensorDocument[]> {
     return this.sensorModel.find().exec();
+  }
+
+  async findById(id: string): Promise<SensorDocument> {
+    return this.sensorModel.findById(id).exec();
+  }
+
+  async updateById(id: string, inputDoc: object): Promise<SensorDocument> {
+    return this.sensorModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
+  }
+
+  async deleteById(id: string): Promise<SensorDocument> {
+    return this.sensorModel.findByIdAndDelete(id).exec();
   }
 }

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { SensorDto } from './sensor.dto';
 import { SensorDocument } from './sensor.schema';
 import { SensorService } from './sensor.service';
@@ -8,12 +16,30 @@ export class SensorController {
   constructor(private sensorService: SensorService) {}
 
   @Post()
-  async post(@Body() sensorDto: SensorDto): Promise<SensorDocument> {
-    return this.sensorService.post(sensorDto);
+  async create(@Body() sensorDto: SensorDto): Promise<SensorDocument> {
+    return this.sensorService.create(sensorDto);
   }
 
   @Get()
-  async getAll(): Promise<SensorDocument[]> {
-    return this.sensorService.getAll();
+  async findAll(): Promise<SensorDocument[]> {
+    return this.sensorService.findAll();
+  }
+
+  @Get()
+  async findByid(@Query('id') id: string): Promise<SensorDocument> {
+    return this.sensorService.findById(id);
+  }
+
+  @Put()
+  async updateById(
+    @Query('id') id: string,
+    @Body() inputDoc: object,
+  ): Promise<SensorDocument> {
+    return this.sensorService.updateById(id, inputDoc);
+  }
+
+  @Delete()
+  async deleteById(@Query('id') id: string): Promise<SensorDocument> {
+    return this.sensorService.deleteById(id);
   }
 }
