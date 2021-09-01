@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { SensorDto } from './sensor.dto';
 import { SensorDocument } from './sensor.schema';
 import { SensorService } from './sensor.service';
@@ -23,7 +31,10 @@ export class SensorController {
   }
 
   @Put()
-  async updateById(@Query('id') id: string, @Body() sensorDto: SensorDto): Promise<SensorDocument> {
+  async updateById(
+    @Query('id') id: string,
+    @Body() sensorDto: SensorDto,
+  ): Promise<SensorDocument> {
     return this.sensorService.updateById(id, sensorDto);
   }
 

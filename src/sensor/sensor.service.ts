@@ -24,7 +24,9 @@ export class SensorService {
   }
 
   async updateById(id: string, inputDoc: object): Promise<SensorDocument> {
-    return this.sensorModel.findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true }).exec();
+    return this.sensorModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
   }
 
   async deleteById(id: string): Promise<SensorDocument> {
