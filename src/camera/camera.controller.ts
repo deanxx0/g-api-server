@@ -20,17 +20,17 @@ export class CameraController {
     return this.cameraService.create(cameraDto);
   }
 
-  @Get()
+  @Get('all')
   async findAll(): Promise<CameraDocument[]> {
     return this.cameraService.findAll();
   }
 
-  @Get()
+  @Get('by-id')
   async findById(@Query('id') id: string): Promise<CameraDocument> {
     return this.cameraService.findById(id);
   }
 
-  @Get()
+  @Get('by-groups')
   async findByGroups(
     @Query('groups') groups: string,
   ): Promise<CameraDocument[]> {
@@ -38,12 +38,12 @@ export class CameraController {
     return this.cameraService.findByGroups(arrGroups);
   }
 
-  @Get()
+  @Get('by-serial')
   async findBySerial(@Query('serial') serial: string): Promise<CameraDocument> {
     return this.cameraService.findBySerial(serial);
   }
 
-  @Put()
+  @Put('by-id')
   async updateById(
     @Query('id') id: string,
     @Body() inputDoc: object,
@@ -51,7 +51,7 @@ export class CameraController {
     return this.cameraService.updateById(id, inputDoc);
   }
 
-  @Delete()
+  @Delete('by-id')
   async deleteById(@Query('id') id: string): Promise<CameraDocument> {
     return this.cameraService.deleteById(id);
   }
