@@ -11,8 +11,8 @@ export class SensorService {
   ) {}
 
   async create(sensorDto: SensorDto): Promise<SensorDocument> {
-    const createDoc = new this.sensorModel(sensorDto);
-    return createDoc.save();
+    const createdDoc = new this.sensorModel(sensorDto);
+    return createdDoc.save();
   }
 
   async findAll(): Promise<SensorDocument[]> {

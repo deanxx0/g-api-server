@@ -20,17 +20,17 @@ export class LightController {
     return this.lightService.create(lightDto);
   }
 
-  @Get()
+  @Get('all')
   async findAll(): Promise<LightDocument[]> {
     return this.lightService.findAll();
   }
 
-  @Get()
+  @Get('by-id')
   async findById(@Query('id') id: string): Promise<LightDocument> {
     return this.lightService.findById(id);
   }
 
-  @Put()
+  @Put('by-id')
   async updateById(
     @Query('id') id: string,
     @Body() inputDoc: object,
@@ -38,7 +38,7 @@ export class LightController {
     return this.lightService.updateById(id, inputDoc);
   }
 
-  @Delete()
+  @Delete('by-id')
   async deleteById(@Query('id') id: string): Promise<LightDocument> {
     return this.lightService.deleteById(id);
   }

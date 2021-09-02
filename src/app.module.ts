@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SensorModule } from './sensor/sensor.module';
 import { LightModule } from './light/light.module';
+import { CameraModule } from './camera/camera.module';
+import { VehicleModule } from './vehicle/vehicle.module';
 
 @Module({
   imports: [
@@ -12,6 +14,8 @@ import { LightModule } from './light/light.module';
     ),
     SensorModule,
     LightModule,
+    CameraModule,
+    VehicleModule,
   ],
 })
 export class AppModule {}
