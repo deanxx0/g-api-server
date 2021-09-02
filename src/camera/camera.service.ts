@@ -10,7 +10,7 @@ export class CameraService {
     @InjectModel(Camera.name) private cameraModel: Model<CameraDocument>,
   ) {}
 
-  async create(cameraDto: CameraDto): Promise<Camera> {
+  async create(cameraDto: CameraDto): Promise<CameraDocument> {
     const createdDoc = new this.cameraModel(cameraDto);
     return createdDoc.save();
   }
