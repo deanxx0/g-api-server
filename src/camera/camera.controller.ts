@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { CameraDto } from './camera.dto';
 import { CameraDocument } from './camera.schema';
 import { CameraService } from './camera.service';
@@ -23,7 +31,9 @@ export class CameraController {
   }
 
   @Get()
-  async findByGroups(@Query('groups') groups: string): Promise<CameraDocument[]> {
+  async findByGroups(
+    @Query('groups') groups: string,
+  ): Promise<CameraDocument[]> {
     const arrGroups = groups.split(',');
     return this.cameraService.findByGroups(arrGroups);
   }
@@ -34,7 +44,10 @@ export class CameraController {
   }
 
   @Put()
-  async updateById(@Query('id') id: string, @Body() inputDoc: object): Promise<CameraDocument> {
+  async updateById(
+    @Query('id') id: string,
+    @Body() inputDoc: object,
+  ): Promise<CameraDocument> {
     return this.cameraService.updateById(id, inputDoc);
   }
 

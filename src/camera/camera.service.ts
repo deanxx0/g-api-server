@@ -31,8 +31,10 @@ export class CameraService {
     return this.cameraModel.findOne({ serial: serial }).exec();
   }
 
-  async updateById(id: string, inputDoc: object):Promise<CameraDocument> {
-    return this.cameraModel.findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true }).exec();
+  async updateById(id: string, inputDoc: object): Promise<CameraDocument> {
+    return this.cameraModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
   }
 
   async deleteById(id: string): Promise<CameraDocument> {
