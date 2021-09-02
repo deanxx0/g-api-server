@@ -20,17 +20,17 @@ export class SensorController {
     return this.sensorService.create(sensorDto);
   }
 
-  @Get()
+  @Get('all')
   async findAll(): Promise<SensorDocument[]> {
     return this.sensorService.findAll();
   }
 
-  @Get()
+  @Get('by-id')
   async findByid(@Query('id') id: string): Promise<SensorDocument> {
     return this.sensorService.findById(id);
   }
 
-  @Put()
+  @Put('by-id')
   async updateById(
     @Query('id') id: string,
     @Body() inputDoc: object,
@@ -38,7 +38,7 @@ export class SensorController {
     return this.sensorService.updateById(id, inputDoc);
   }
 
-  @Delete()
+  @Delete('by-id')
   async deleteById(@Query('id') id: string): Promise<SensorDocument> {
     return this.sensorService.deleteById(id);
   }
