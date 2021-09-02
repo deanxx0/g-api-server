@@ -8,6 +8,4 @@ export class VehicleService {
   constructor(
     @InjectModel(Vehicle.name) private vehicleModel: Model<VehicleDocument>,
   ) {}
-
-  
 }
