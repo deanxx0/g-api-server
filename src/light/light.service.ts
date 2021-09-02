@@ -11,8 +11,8 @@ export class LightService {
   ) {}
 
   async create(lightDto: LightDto): Promise<LightDocument> {
-    const createDoc = new this.lightModel(lightDto);
-    return createDoc.save();
+    const createdDoc = new this.lightModel(lightDto);
+    return createdDoc.save();
   }
 
   async findAll(): Promise<LightDocument[]> {
