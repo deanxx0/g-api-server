@@ -32,7 +32,7 @@ export class VehicleService {
     return this.vehicleModel.findByIdAndUpdate(id, { $set: { ...inputDoc }}, { new: true }).exec();
   }
 
-  async deleteByid(id: string): Promise<VehicleDocument> {
+  async deleteById(id: string): Promise<VehicleDocument> {
     return this.vehicleModel.findByIdAndDelete(id).exec();
   }
 }
