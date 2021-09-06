@@ -25,7 +25,7 @@ export class VehicleService {
 
   async findByVincode(vincode: string): Promise<VehicleDocument> {
     const latestDoc = await this.vehicleModel
-      .find({ vincode: vincode })
+      .find({ vinCode: vincode })
       .sort({ _id: -1 })
       .limit(1)
       .exec();
