@@ -24,12 +24,18 @@ export class VehicleService {
   }
 
   async findByVincode(vincode: string): Promise<VehicleDocument> {
-    const latestDoc = await this.vehicleModel.find({ vincode: vincode }).sort({ _id: -1 }).limit(1).exec();
+    const latestDoc = await this.vehicleModel
+      .find({ vincode: vincode })
+      .sort({ _id: -1 })
+      .limit(1)
+      .exec();
     return latestDoc[latestDoc.length - 1];
   }
 
   async updateById(id: string, inputDoc: object): Promise<VehicleDocument> {
-    return this.vehicleModel.findByIdAndUpdate(id, { $set: { ...inputDoc }}, { new: true }).exec();
+    return this.vehicleModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
   }
 
   async deleteById(id: string): Promise<VehicleDocument> {

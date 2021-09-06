@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { VehicleDto } from './vehicle.dto';
 import { VehicleDocument } from './vehicle.schema';
 import { VehicleService } from './vehicle.service';
@@ -23,12 +31,17 @@ export class VehicleController {
   }
 
   @Get('by-vincode')
-  async findByVincode(@Query('vincode') vincode: string): Promise<VehicleDocument> {
+  async findByVincode(
+    @Query('vincode') vincode: string,
+  ): Promise<VehicleDocument> {
     return this.vehicleService.findByVincode(vincode);
   }
 
   @Put('by-id')
-  async updateById(@Query('id') id: string, @Body() inputDoc: object): Promise<VehicleDocument> {
+  async updateById(
+    @Query('id') id: string,
+    @Body() inputDoc: object,
+  ): Promise<VehicleDocument> {
     return this.vehicleService.updateById(id, inputDoc);
   }
 
