@@ -8,10 +8,12 @@ import { VehicleModel, VehicleModelDocument } from './vehicle-model.schema';
 export class VehicleModelService {
   constructor(
     @InjectModel(VehicleModel.name)
-    private vehicleModelModel: Model<VehicleModelDocument>
+    private vehicleModelModel: Model<VehicleModelDocument>,
   ) {}
 
-  async create(vehicleModelDto: VehicleModelDto): Promise<VehicleModelDocument> {
+  async create(
+    vehicleModelDto: VehicleModelDto,
+  ): Promise<VehicleModelDocument> {
     const createdDoc = new this.vehicleModelModel(vehicleModelDto);
     return createdDoc.save();
   }
@@ -28,8 +30,13 @@ export class VehicleModelService {
     return this.vehicleModelModel.findOne({ model: model }).exec();
   }
 
-  async updateById(id: string, inputDoc: object): Promise<VehicleModelDocument> {
-    return this.vehicleModelModel.findByIdAndUpdate(id, { $set: { ...inputDoc }}, { new: true }).exec();
+  async updateById(
+    id: string,
+    inputDoc: object,
+  ): Promise<VehicleModelDocument> {
+    return this.vehicleModelModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
   }
 
   async deleteById(id: string): Promise<VehicleModelDocument> {

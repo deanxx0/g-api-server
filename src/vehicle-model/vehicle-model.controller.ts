@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { VehicleModelDto } from './vehicle-model.dto';
 import { VehicleModelDocument } from './vehicle-model.schema';
 import { VehicleModelService } from './vehicle-model.service';
@@ -8,7 +16,9 @@ export class VehicleModelController {
   constructor(private vehicleModelService: VehicleModelService) {}
 
   @Post()
-  async create(@Body() vehicleModelDto: VehicleModelDto): Promise<VehicleModelDocument> {
+  async create(
+    @Body() vehicleModelDto: VehicleModelDto,
+  ): Promise<VehicleModelDocument> {
     return this.vehicleModelService.create(vehicleModelDto);
   }
 
@@ -23,12 +33,17 @@ export class VehicleModelController {
   }
 
   @Get('by-model')
-  async findByModel(@Query('model') model: string): Promise<VehicleModelDocument> {
+  async findByModel(
+    @Query('model') model: string,
+  ): Promise<VehicleModelDocument> {
     return this.vehicleModelService.findByModel(model);
   }
 
   @Put('by-id')
-  async updateById(@Query('id') id: string, @Body() inputDoc: object): Promise<VehicleModelDocument> {
+  async updateById(
+    @Query('id') id: string,
+    @Body() inputDoc: object,
+  ): Promise<VehicleModelDocument> {
     return this.vehicleModelService.updateById(id, inputDoc);
   }
 
