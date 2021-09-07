@@ -18,6 +18,13 @@ export class VehicleModelService {
     return createdDoc.save();
   }
 
+  async createWithModel(model: string): Promise<VehicleModelDocument> {
+    const createdDoc = new this.vehicleModelModel({
+      model: model
+    });
+    return createdDoc.save();
+  }
+
   async findAll(): Promise<VehicleModelDocument[]> {
     return this.vehicleModelModel.find().exec();
   }
