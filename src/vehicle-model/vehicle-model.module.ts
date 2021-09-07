@@ -12,5 +12,6 @@ import { VehicleModelService } from './vehicle-model.service';
   ],
   controllers: [VehicleModelController],
   providers: [VehicleModelService],
+  exports:[VehicleModelService],
 })
 export class VehicleModelModule {}
