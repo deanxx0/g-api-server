@@ -18,8 +18,8 @@ export class VehicleModelController {
   @Post()
   async create(
     @Body() vehicleModelDto: VehicleModelDto,
-  ): Promise<VehicleModelDocument> {
-    return this.vehicleModelService.create(vehicleModelDto);
+  ) {
+    this.vehicleModelService.create(vehicleModelDto);
   }
 
   @Get('all')
