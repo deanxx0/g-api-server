@@ -7,16 +7,18 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { VehicleModelService } from 'src/vehicle-model/vehicle-model.service';
 import { VehicleDto } from './vehicle.dto';
 import { VehicleDocument } from './vehicle.schema';
 import { VehicleService } from './vehicle.service';
 
 @Controller('vehicle')
 export class VehicleController {
-  constructor(private vehicleService: VehicleService) {}
+  constructor(private vehicleService: VehicleService, private vehicleModelService: VehicleModelService) {}
 
   @Post()
   async create(@Body() vehicleDto: VehicleDto): Promise<VehicleDocument> {
+    await this.vehicleModelService.createWithModel(vehicleDto.properties.model);
     return this.vehicleService.create(vehicleDto);
   }
 
