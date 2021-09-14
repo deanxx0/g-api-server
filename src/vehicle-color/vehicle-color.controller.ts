@@ -31,10 +31,10 @@ export class VehicleColorController {
   }
 
   @Get('by-color')
-  async findByModel(
-    @Query('model') model: string,
+  async findByColor(
+    @Query('color') color: string,
   ): Promise<VehicleColorDocument> {
-    return this.vehicleColorService.findByModel(model);
+    return this.vehicleColorService.findByColor(color);
   }
 
   @Put('by-id')
