@@ -40,7 +40,9 @@ export class VehicleModelService {
   }
 
   async getModelList(): Promise<string[]> {
-    const modelDocs = await this.vehicleModelModel.find({}, {model: 1}).exec();
+    const modelDocs = await this.vehicleModelModel
+      .find({}, { model: 1 })
+      .exec();
     const models: string[] = modelDocs.map((modelDoc) => modelDoc.model);
     models.unshift('all');
     return models;

@@ -40,7 +40,9 @@ export class VehicleColorService {
   }
 
   async getColorList(): Promise<string[]> {
-    const colorDocs = await this.vehicleColorModel.find({}, {color: 1}).exec();
+    const colorDocs = await this.vehicleColorModel
+      .find({}, { color: 1 })
+      .exec();
     const colors: string[] = colorDocs.map((colorDoc) => colorDoc.color);
     colors.unshift('all');
     return colors;
