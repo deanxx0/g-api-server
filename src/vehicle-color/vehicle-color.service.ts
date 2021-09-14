@@ -27,5 +27,19 @@ export class VehicleColorService {
     return this.vehicleColorModel.find().exec();
   }
 
-  async 
+  async findById(id: string): Promise<VehicleColorDocument> {
+    return this.vehicleColorModel.findById(id).exec();
+  }
+
+  async findByModel(model: string): Promise<VehicleColorDocument> {
+    return this.vehicleColorModel.findOne({ model: model }).exec();
+  }
+
+  async updateById(id: string, inputDoc: object): Promise<VehicleColorDocument> {
+    return this.vehicleColorModel.findByIdAndUpdate(id, {$set: { ...inputDoc }}, { new: true}).exec();
+  }
+
+  async deleteById(id: string): Promise<VehicleColorDocument> {
+    return this.vehicleColorModel.findByIdAndDelete(id).exec();
+  }
 }
