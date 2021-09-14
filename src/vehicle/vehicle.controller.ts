@@ -45,6 +45,13 @@ export class VehicleController {
     return this.vehicleService.findByVincode(vincode);
   }
 
+  @Get('model-color-list')
+  async getModelColorList(): Promise<object> {
+    const models = await this.vehicleModelService.getModelList();
+    const colors = await this.vehicleColorService.getColorList();
+    return this.vehicleService.getModelColorList(models, colors);
+  }
+
   @Put('by-id')
   async updateById(
     @Query('id') id: string,
