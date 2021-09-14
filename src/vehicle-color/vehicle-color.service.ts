@@ -39,6 +39,13 @@ export class VehicleColorService {
     return this.vehicleColorModel.findOne({ color: color }).exec();
   }
 
+  async getColorList(): Promise<object> {
+    const colorDocs = await this.vehicleColorModel.find({}, {color: 1}).exec();
+    const colors: string[] = colorDocs.map((colorDoc) => colorDoc.color);
+    colors.unshift('all');
+    return colors;
+  }
+
   async updateById(
     id: string,
     inputDoc: object,
