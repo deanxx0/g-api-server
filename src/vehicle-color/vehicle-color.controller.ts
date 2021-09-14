@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { VehicleColorDto } from './vehicle-color.dto';
 import { VehicleColorDocument } from './vehicle-color.schema';
 import { VehicleColorService } from './vehicle-color.service';
@@ -23,12 +31,17 @@ export class VehicleColorController {
   }
 
   @Get('by-model')
-  async findByModel(@Query('model') model: string): Promise<VehicleColorDocument> {
+  async findByModel(
+    @Query('model') model: string,
+  ): Promise<VehicleColorDocument> {
     return this.vehicleColorService.findByModel(model);
   }
 
   @Put('by-id')
-  async updateById(@Query('id') id: string, @Body() inputDoc: object): Promise<VehicleColorDocument> {
+  async updateById(
+    @Query('id') id: string,
+    @Body() inputDoc: object,
+  ): Promise<VehicleColorDocument> {
     return this.vehicleColorService.updateById(id, inputDoc);
   }
 

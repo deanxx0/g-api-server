@@ -13,14 +13,18 @@ export class VehicleColorService {
 
   async create(vehicleColorDto: VehicleColorDto) {
     const createdDoc = new this.vehicleColorModel(vehicleColorDto);
-    await createdDoc.save().catch(error => console.log(`create vehicle color error: ${error}`));
+    await createdDoc
+      .save()
+      .catch((error) => console.log(`create vehicle color error: ${error}`));
   }
 
   async createWithColor(color: string) {
     const createdDoc = new this.vehicleColorModel({
-      color: color
+      color: color,
     });
-    await createdDoc.save().catch(error => console.log(`create vehicle color error: ${error}`));
+    await createdDoc
+      .save()
+      .catch((error) => console.log(`create vehicle color error: ${error}`));
   }
 
   async findAll(): Promise<VehicleColorDocument[]> {
@@ -35,8 +39,13 @@ export class VehicleColorService {
     return this.vehicleColorModel.findOne({ model: model }).exec();
   }
 
-  async updateById(id: string, inputDoc: object): Promise<VehicleColorDocument> {
-    return this.vehicleColorModel.findByIdAndUpdate(id, {$set: { ...inputDoc }}, { new: true}).exec();
+  async updateById(
+    id: string,
+    inputDoc: object,
+  ): Promise<VehicleColorDocument> {
+    return this.vehicleColorModel
+      .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })
+      .exec();
   }
 
   async deleteById(id: string): Promise<VehicleColorDocument> {

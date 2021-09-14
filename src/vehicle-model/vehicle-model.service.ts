@@ -11,18 +11,20 @@ export class VehicleModelService {
     private vehicleModelModel: Model<VehicleModelDocument>,
   ) {}
 
-  async create(
-    vehicleModelDto: VehicleModelDto,
-  ) {
+  async create(vehicleModelDto: VehicleModelDto) {
     const createdDoc = new this.vehicleModelModel(vehicleModelDto);
-    await createdDoc.save().catch(error => console.log(`create vehicle model error: ${error}`));
+    await createdDoc
+      .save()
+      .catch((error) => console.log(`create vehicle model error: ${error}`));
   }
 
   async createWithModel(model: string) {
     const createdDoc = new this.vehicleModelModel({
-      model: model
+      model: model,
     });
-    await createdDoc.save().catch(error => console.log(`create vehicle model error: ${error}`));
+    await createdDoc
+      .save()
+      .catch((error) => console.log(`create vehicle model error: ${error}`));
   }
 
   async findAll(): Promise<VehicleModelDocument[]> {

@@ -15,7 +15,11 @@ import { VehicleService } from './vehicle.service';
 
 @Controller('vehicle')
 export class VehicleController {
-  constructor(private vehicleService: VehicleService, private vehicleModelService: VehicleModelService, private vehicleColorService: VehicleColorService) {}
+  constructor(
+    private vehicleService: VehicleService,
+    private vehicleModelService: VehicleModelService,
+    private vehicleColorService: VehicleColorService,
+  ) {}
 
   @Post()
   async create(@Body() vehicleDto: VehicleDto): Promise<VehicleDocument> {
