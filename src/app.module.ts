@@ -6,6 +6,7 @@ import { LightModule } from './light/light.module';
 import { CameraModule } from './camera/camera.module';
 import { VehicleModule } from './vehicle/vehicle.module';
 import { VehicleModelModule } from './vehicle-model/vehicle-model.module';
+import { VehicleColorModule } from './vehicle-color/vehicle-color.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { VehicleModelModule } from './vehicle-model/vehicle-model.module';
     CameraModule,
     VehicleModule,
     VehicleModelModule,
+    VehicleColorModule,
   ],
 })
 export class AppModule {}

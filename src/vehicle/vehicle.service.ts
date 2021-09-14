@@ -32,6 +32,13 @@ export class VehicleService {
     return latestDoc[latestDoc.length - 1];
   }
 
+  async getModelColorList(models: string[], colors: string[]): Promise<object> {
+    return {
+      models,
+      colors,
+    };
+  }
+
   async updateById(id: string, inputDoc: object): Promise<VehicleDocument> {
     return this.vehicleModel
       .findByIdAndUpdate(id, { $set: { ...inputDoc } }, { new: true })

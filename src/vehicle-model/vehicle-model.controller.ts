@@ -16,9 +16,7 @@ export class VehicleModelController {
   constructor(private vehicleModelService: VehicleModelService) {}
 
   @Post()
-  async create(
-    @Body() vehicleModelDto: VehicleModelDto,
-  ) {
+  async create(@Body() vehicleModelDto: VehicleModelDto) {
     this.vehicleModelService.create(vehicleModelDto);
   }
 

@@ -7,6 +7,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { VehicleColorService } from 'src/vehicle-color/vehicle-color.service';
 import { VehicleModelService } from 'src/vehicle-model/vehicle-model.service';
 import { VehicleDto } from './vehicle.dto';
 import { VehicleDocument } from './vehicle.schema';
@@ -14,11 +15,16 @@ import { VehicleService } from './vehicle.service';
 
 @Controller('vehicle')
 export class VehicleController {
-  constructor(private vehicleService: VehicleService, private vehicleModelService: VehicleModelService) {}
+  constructor(
+    private vehicleService: VehicleService,
+    private vehicleModelService: VehicleModelService,
+    private vehicleColorService: VehicleColorService,
+  ) {}
 
   @Post()
   async create(@Body() vehicleDto: VehicleDto): Promise<VehicleDocument> {
     await this.vehicleModelService.createWithModel(vehicleDto.properties.model);
+    await this.vehicleColorService.createWithColor(vehicleDto.properties.color);
     return this.vehicleService.create(vehicleDto);
   }
 
@@ -37,6 +43,13 @@ export class VehicleController {
     @Query('vincode') vincode: string,
   ): Promise<VehicleDocument> {
     return this.vehicleService.findByVincode(vincode);
+  }
+
+  @Get('model-color-list')
+  async getModelColorList(): Promise<object> {
+    const models = await this.vehicleModelService.getModelList();
+    const colors = await this.vehicleColorService.getColorList();
+    return this.vehicleService.getModelColorList(models, colors);
   }
 
   @Put('by-id')
